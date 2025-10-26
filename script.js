@@ -319,13 +319,30 @@ document.addEventListener('DOMContentLoaded', function() {
     hamburger.addEventListener('click', () => {
         hamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
+        
+        // Prevent body scroll when menu is open
+        if (navMenu.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
     });
 
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
             hamburger.classList.remove('active');
             navMenu.classList.remove('active');
+            document.body.style.overflow = 'auto';
         });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
     });
 
     // Smooth scrolling for navigation links
@@ -449,6 +466,52 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(typeWriter, 2000);
     }
 
+    // Touch-friendly interactions for mobile
+    if ('ontouchstart' in window) {
+        // Add touch feedback for buttons
+        const buttons = document.querySelectorAll('.btn, .social-link, .project-link');
+        buttons.forEach(button => {
+            button.addEventListener('touchstart', function() {
+                this.style.transform = 'scale(0.95)';
+            });
+            
+            button.addEventListener('touchend', function() {
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+
+        // Optimize animations for mobile
+        const mediaQuery = window.matchMedia('(max-width: 768px)');
+        if (mediaQuery.matches) {
+            // Reduce animation complexity on mobile
+            gsap.globalTimeline.timeScale(1.5); // Speed up animations
+            
+            // Disable some heavy animations on mobile
+            const heavyAnimations = document.querySelectorAll('.floating-shape, .particle-dot');
+            heavyAnimations.forEach(element => {
+                element.style.animation = 'none';
+            });
+        }
+    }
+
+    // Optimize scroll performance on mobile
+    let ticking = false;
+    function updateScrollEffects() {
+        // Your scroll effects here
+        ticking = false;
+    }
+
+    function requestScrollUpdate() {
+        if (!ticking) {
+            requestAnimationFrame(updateScrollEffects);
+            ticking = true;
+        }
+    }
+
+    window.addEventListener('scroll', requestScrollUpdate, { passive: true });
+
     // Parallax effect for hero section
     gsap.to('.hero-bg', {
         yPercent: -50,
@@ -523,10 +586,41 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Hide cursor trail on mobile
-    if (window.innerWidth <= 768) {
+    // Hide cursor trail on mobile and touch devices
+    if (window.innerWidth <= 768 || 'ontouchstart' in window) {
         cursor.style.display = 'none';
     }
+
+    // Fix viewport height for mobile browsers
+    function setViewportHeight() {
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+
+    setViewportHeight();
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        setViewportHeight();
+        
+        if (window.innerWidth <= 768 || 'ontouchstart' in window) {
+            cursor.style.display = 'none';
+        } else {
+            cursor.style.display = 'block';
+        }
+        
+        // Close mobile menu on resize
+        if (window.innerWidth > 768) {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    // Handle orientation change for mobile
+    window.addEventListener('orientationchange', () => {
+        setTimeout(setViewportHeight, 100);
+    });
 });
 
 // Utility function for random animations
