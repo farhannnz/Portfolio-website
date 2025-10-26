@@ -6,17 +6,45 @@ document.addEventListener('DOMContentLoaded', function() {
     // Loading Screen Animation
     const loader = document.getElementById('loader');
     const loaderProgress = document.querySelector('.loader-progress');
+    const loaderPercentage = document.querySelector('.loader-percentage');
     
-    // Simulate loading progress
+    // Animate loading progress with percentage
+    let progress = 0;
+    const progressInterval = setInterval(() => {
+        progress += Math.random() * 15;
+        if (progress > 100) progress = 100;
+        
+        loaderPercentage.textContent = Math.floor(progress) + '%';
+        
+        if (progress >= 100) {
+            clearInterval(progressInterval);
+            loaderPercentage.textContent = '100%';
+        }
+    }, 100);
+    
+    // GSAP progress animation
     gsap.to(loaderProgress, {
         width: '100%',
-        duration: 2,
+        duration: 3,
         ease: 'power2.inOut',
         onComplete: () => {
-            gsap.to(loader, {
+            // Add exit animation
+            const tl = gsap.timeline();
+            
+            tl.to('.loader-icon', {
+                scale: 1.2,
+                duration: 0.3,
+                ease: 'back.out(1.7)'
+            })
+            .to('.loader-content', {
+                y: -50,
                 opacity: 0,
                 duration: 0.5,
-                delay: 0.5,
+                ease: 'power2.in'
+            })
+            .to(loader, {
+                opacity: 0,
+                duration: 0.5,
                 onComplete: () => {
                     loader.style.display = 'none';
                     initAnimations();
@@ -85,14 +113,26 @@ document.addEventListener('DOMContentLoaded', function() {
         // Hero section animations
         const tl = gsap.timeline();
         
-        tl.to('.title-line', {
+        tl.to('.hero-badge', {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            ease: 'back.out(1.7)'
+        })
+        .to('.title-line', {
             opacity: 1,
             y: 0,
             duration: 0.8,
-            stagger: 0.2,
+            stagger: 0.3,
             ease: 'power2.out'
-        })
+        }, '-=0.3')
         .to('.hero-description', {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            ease: 'power2.out'
+        }, '-=0.4')
+        .to('.hero-stats', {
             opacity: 1,
             y: 0,
             duration: 0.6,
@@ -145,7 +185,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 scrollTrigger: {
                     trigger: item,
                     start: 'top 85%',
-                    toggleActions: 'play none none reverse'
+                    toggleActions: 'play none none reverse',
+                    onEnter: () => {
+                        // Animate skill level bars
+                        const levelBar = item.querySelector('.level-bar');
+                        if (levelBar) {
+                            const level = levelBar.getAttribute('data-level');
+                            gsap.to(levelBar, {
+                                width: level + '%',
+                                duration: 1.5,
+                                delay: 0.5,
+                                ease: 'power2.out'
+                            });
+                        }
+                    }
                 }
             });
         });
@@ -370,12 +423,31 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Add floating animation to profile card
     gsap.to('.profile-card', {
-        y: -10,
-        duration: 2,
+        y: -15,
+        rotation: 2,
+        duration: 3,
         ease: 'power2.inOut',
         yoyo: true,
         repeat: -1
     });
+
+    // Typing animation for hero subtitle
+    const typingText = document.querySelector('.typing-text');
+    if (typingText) {
+        const text = typingText.textContent;
+        typingText.textContent = '';
+        
+        let i = 0;
+        const typeWriter = () => {
+            if (i < text.length) {
+                typingText.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        };
+        
+        setTimeout(typeWriter, 2000);
+    }
 
     // Parallax effect for hero section
     gsap.to('.hero-bg', {

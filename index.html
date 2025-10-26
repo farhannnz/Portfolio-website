@@ -6,33 +6,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Farhan Pathan - Full Stack Developer</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 </head>
 
 <body>
     <!-- Loading Screen -->
     <div id="loader">
+        <div class="loader-bg-animation"></div>
         <div class="loader-content">
-            <div class="loader-text">FARHAN PATHAN</div>
+            <div class="loader-icon">
+                <div class="code-brackets">
+                    <span class="bracket left">&lt;</span>
+                    <div class="dev-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <span class="bracket right">/&gt;</span>
+                </div>
+            </div>
+            <div class="loader-text">
+                <span class="text-line">FARHAN</span>
+                <span class="text-line">PATHAN</span>
+            </div>
+            <div class="loader-subtitle">Full Stack Developer</div>
             <div class="loader-bar">
                 <div class="loader-progress"></div>
+                <div class="loader-percentage">0%</div>
+            </div>
+            <div class="loading-dots">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
+        <div class="loader-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+    </div>
+
+    <!-- Floating Background Elements -->
+    <div class="floating-elements">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+        <div class="floating-shape shape-4"></div>
+        <div class="floating-shape shape-5"></div>
     </div>
 
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <span class="logo-text">FP</span>
+                <div class="logo-container">
+                    <span class="logo-text">FP</span>
+                    <div class="logo-glow"></div>
+                </div>
             </div>
             <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#home" class="nav-link"><span class="nav-text">Home</span>
+                        <div class="nav-hover-effect"></div>
+                    </a></li>
+                <li><a href="#about" class="nav-link"><span class="nav-text">About</span>
+                        <div class="nav-hover-effect"></div>
+                    </a></li>
+                <li><a href="#experience" class="nav-link"><span class="nav-text">Experience</span>
+                        <div class="nav-hover-effect"></div>
+                    </a></li>
+                <li><a href="#projects" class="nav-link"><span class="nav-text">Projects</span>
+                        <div class="nav-hover-effect"></div>
+                    </a></li>
+                <li><a href="#contact" class="nav-link"><span class="nav-text">Contact</span>
+                        <div class="nav-hover-effect"></div>
+                    </a></li>
             </ul>
             <div class="hamburger">
                 <span></span>
@@ -49,37 +101,97 @@
         </div>
         <div class="hero-content">
             <div class="hero-text">
+                <div class="hero-badge">
+                    <span class="badge-text">🚀 Available for Work</span>
+                    <div class="badge-glow"></div>
+                </div>
                 <h1 class="hero-title">
-                    <span class="title-line">Hi, I'm</span>
-                    <span class="title-line main-name">Farhan Pathan</span>
-                    <span class="title-line subtitle">Full Stack Developer</span>
+                    <span class="title-line greeting">Hi, I'm</span>
+                    <span class="title-line main-name">
+                        <span class="name-part">Farhan</span>
+                        <span class="name-part">Pathan</span>
+                    </span>
+                    <span class="title-line subtitle">
+                        <span class="typing-text">Full Stack Developer</span>
+                        <span class="cursor">|</span>
+                    </span>
                 </h1>
                 <p class="hero-description">
-                    Aspiring Full Stack Developer with hands-on experience in MERN stack, Django, Firebase,
-                    and real-world freelancing projects. Building scalable, user-focused web applications.
+                    <span class="highlight-text">Aspiring Full Stack Developer</span> with hands-on experience in
+                    <span class="tech-highlight">MERN stack</span>, <span class="tech-highlight">Django</span>,
+                    <span class="tech-highlight">Firebase</span>, and real-world freelancing projects.
+                    Building <span class="highlight-text">scalable, user-focused</span> web applications.
                 </p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">5+</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">2+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Dedication</span>
+                    </div>
+                </div>
                 <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">View My Work</a>
-                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                    <a href="#projects" class="btn btn-primary">
+                        <span class="btn-text">View My Work</span>
+                        <div class="btn-glow"></div>
+                        <i class="fas fa-rocket btn-icon"></i>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <span class="btn-text">Get In Touch</span>
+                        <div class="btn-glow"></div>
+                        <i class="fas fa-paper-plane btn-icon"></i>
+                    </a>
                 </div>
             </div>
             <div class="hero-image">
                 <div class="profile-card">
                     <div class="card-glow"></div>
+                    <div class="card-border"></div>
                     <div class="profile-content">
                         <div class="profile-avatar">
-                            <i class="fas fa-user"></i>
+                            <div class="avatar-rings">
+                                <div class="ring ring-1"></div>
+                                <div class="ring ring-2"></div>
+                                <div class="ring ring-3"></div>
+                            </div>
+                            <div class="avatar-icon">
+                                <i class="fas fa-laptop-code"></i>
+                                <div class="icon-glow"></div>
+                            </div>
+                            <div class="avatar-particles">
+                                <div class="particle-dot"></div>
+                                <div class="particle-dot"></div>
+                                <div class="particle-dot"></div>
+                                <div class="particle-dot"></div>
+                            </div>
                         </div>
                         <div class="profile-info">
-                            <h3>Farhan Pathan</h3>
-                            <p>Full Stack Developer</p>
+                            <h3 class="profile-name">Farhan Pathan</h3>
+                            <p class="profile-title">Full Stack Developer</p>
+                            <div class="profile-status">
+                                <div class="status-dot"></div>
+                                <span>Available for projects</span>
+                            </div>
                             <div class="social-links">
-                                <a href="https://www.linkedin.com/in/farhannnz" target="_blank" class="social-link"><i
-                                        class="fab fa-linkedin"></i></a>
-                                <a href="https://github.com/farhannnz" target="_blank" class="social-link"><i
-                                        class="fab fa-github"></i></a>
-                                <a href="mailto:farhankhan862583@gmail.com" class="social-link"><i
-                                        class="fas fa-envelope"></i></a>
+                                <a href="https://www.linkedin.com/in/farhannnz" target="_blank"
+                                    class="social-link linkedin">
+                                    <i class="fab fa-linkedin"></i>
+                                    <div class="social-glow"></div>
+                                </a>
+                                <a href="https://github.com/farhannnz" target="_blank" class="social-link github">
+                                    <i class="fab fa-github"></i>
+                                    <div class="social-glow"></div>
+                                </a>
+                                <a href="mailto:farhankhan862583@gmail.com" class="social-link email">
+                                    <i class="fas fa-envelope"></i>
+                                    <div class="social-glow"></div>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -87,8 +199,13 @@
             </div>
         </div>
         <div class="scroll-indicator">
-            <div class="scroll-line"></div>
-            <span>Scroll</span>
+            <div class="scroll-mouse">
+                <div class="scroll-wheel"></div>
+            </div>
+            <div class="scroll-text">
+                <span>Scroll Down</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
         </div>
     </section>
 
@@ -96,8 +213,16 @@
     <section id="about" class="about">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">About Me</h2>
+                <div class="section-badge">
+                    <span>👨‍💻</span>
+                    <span>About</span>
+                </div>
+                <h2 class="section-title">
+                    <span class="title-word">About</span>
+                    <span class="title-word highlight">Me</span>
+                </h2>
                 <p class="section-subtitle">Get to know me better</p>
+                <div class="section-line"></div>
             </div>
             <div class="about-content">
                 <div class="about-text">
@@ -131,33 +256,75 @@
                 <div class="skills-section">
                     <h3>Technical Skills</h3>
                     <div class="skills-grid">
-                        <div class="skill-item">
-                            <i class="fab fa-react"></i>
-                            <span>React.js</span>
+                        <div class="skill-item react">
+                            <div class="skill-icon">
+                                <i class="fab fa-react"></i>
+                                <div class="skill-glow"></div>
+                            </div>
+                            <span class="skill-name">React.js</span>
+                            <div class="skill-level">
+                                <div class="level-bar" data-level="90"></div>
+                            </div>
                         </div>
-                        <div class="skill-item">
-                            <i class="fab fa-node-js"></i>
-                            <span>Node.js</span>
+                        <div class="skill-item node">
+                            <div class="skill-icon">
+                                <i class="fab fa-node-js"></i>
+                                <div class="skill-glow"></div>
+                            </div>
+                            <span class="skill-name">Node.js</span>
+                            <div class="skill-level">
+                                <div class="level-bar" data-level="85"></div>
+                            </div>
                         </div>
-                        <div class="skill-item">
-                            <i class="fas fa-server"></i>
-                            <span>Express.js</span>
+                        <div class="skill-item express">
+                            <div class="skill-icon">
+                                <i class="fas fa-server"></i>
+                                <div class="skill-glow"></div>
+                            </div>
+                            <span class="skill-name">Express.js</span>
+                            <div class="skill-level">
+                                <div class="level-bar" data-level="80"></div>
+                            </div>
                         </div>
-                        <div class="skill-item">
-                            <i class="fas fa-database"></i>
-                            <span>MongoDB</span>
+                        <div class="skill-item mongo">
+                            <div class="skill-icon">
+                                <i class="fas fa-database"></i>
+                                <div class="skill-glow"></div>
+                            </div>
+                            <span class="skill-name">MongoDB</span>
+                            <div class="skill-level">
+                                <div class="level-bar" data-level="75"></div>
+                            </div>
                         </div>
-                        <div class="skill-item">
-                            <i class="fab fa-python"></i>
-                            <span>Django</span>
+                        <div class="skill-item django">
+                            <div class="skill-icon">
+                                <i class="fab fa-python"></i>
+                                <div class="skill-glow"></div>
+                            </div>
+                            <span class="skill-name">Django</span>
+                            <div class="skill-level">
+                                <div class="level-bar" data-level="70"></div>
+                            </div>
                         </div>
-                        <div class="skill-item">
-                            <i class="fas fa-fire"></i>
-                            <span>Firebase</span>
+                        <div class="skill-item firebase">
+                            <div class="skill-icon">
+                                <i class="fas fa-fire"></i>
+                                <div class="skill-glow"></div>
+                            </div>
+                            <span class="skill-name">Firebase</span>
+                            <div class="skill-level">
+                                <div class="level-bar" data-level="85"></div>
+                            </div>
                         </div>
-                        <div class="skill-item">
-                            <i class="fab fa-js"></i>
-                            <span>JavaScript</span>
+                        <div class="skill-item javascript">
+                            <div class="skill-icon">
+                                <i class="fab fa-js"></i>
+                                <div class="skill-glow"></div>
+                            </div>
+                            <span class="skill-name">JavaScript</span>
+                            <div class="skill-level">
+                                <div class="level-bar" data-level="95"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -168,8 +335,16 @@
     <section id="experience" class="experience">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Work Experience</h2>
+                <div class="section-badge">
+                    <span>💼</span>
+                    <span>Experience</span>
+                </div>
+                <h2 class="section-title">
+                    <span class="title-word">Work</span>
+                    <span class="title-word highlight">Experience</span>
+                </h2>
                 <p class="section-subtitle">My professional journey</p>
+                <div class="section-line"></div>
             </div>
             <div class="timeline">
                 <div class="timeline-item">
@@ -220,8 +395,16 @@
     <section id="projects" class="projects">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Featured Projects</h2>
+                <div class="section-badge">
+                    <span>🚀</span>
+                    <span>Projects</span>
+                </div>
+                <h2 class="section-title">
+                    <span class="title-word">Featured</span>
+                    <span class="title-word highlight">Projects</span>
+                </h2>
                 <p class="section-subtitle">Some of my recent work</p>
+                <div class="section-line"></div>
             </div>
             <div class="projects-grid">
                 <div class="project-card">
@@ -327,8 +510,17 @@
     <section id="achievements" class="achievements">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Achievements & Certifications</h2>
+                <div class="section-badge">
+                    <span>🏆</span>
+                    <span>Achievements</span>
+                </div>
+                <h2 class="section-title">
+                    <span class="title-word">Achievements</span>
+                    <span class="title-word highlight">&</span>
+                    <span class="title-word">Certifications</span>
+                </h2>
                 <p class="section-subtitle">Recognition and continuous learning</p>
+                <div class="section-line"></div>
             </div>
             <div class="achievements-content">
                 <div class="awards-section">
@@ -405,8 +597,17 @@
     <section id="contact" class="contact">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Get In Touch</h2>
+                <div class="section-badge">
+                    <span>📧</span>
+                    <span>Contact</span>
+                </div>
+                <h2 class="section-title">
+                    <span class="title-word">Get</span>
+                    <span class="title-word">In</span>
+                    <span class="title-word highlight">Touch</span>
+                </h2>
                 <p class="section-subtitle">Let's work together</p>
+                <div class="section-line"></div>
             </div>
             <div class="contact-content">
                 <div class="contact-info">
