@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Mobile Menu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-container">
+                    <span class="logo-text">FP</span>
+                    <div class="logo-glow"></div>
+                </div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link"><span class="nav-text">Home</span>
+                        <div class="nav-hover-effect"></div>
+                    </a></li>
+                <li><a href="#about" class="nav-link"><span class="nav-text">About</span>
+                        <div class="nav-hover-effect"></div>
+                    </a></li>
+                <li><a href="#experience" class="nav-link"><span class="nav-text">Experience</span>
+                        <div class="nav-hover-effect"></div>
+                    </a></li>
+                <li><a href="#projects" class="nav-link"><span class="nav-text">Projects</span>
+                        <div class="nav-hover-effect"></div>
+                    </a></li>
+                <li><a href="#contact" class="nav-link"><span class="nav-text">Contact</span>
+                        <div class="nav-hover-effect"></div>
+                    </a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+    
+    <div style="margin-top: 100px; padding: 20px; text-align: center; color: white;">
+        <h1>Debug Mobile Menu</h1>
+        <p>This uses the same CSS as the main portfolio but without the loading screen.</p>
+        <p>Test the hamburger menu on mobile.</p>
+        <button onclick="toggleMenu()" style="padding: 10px 20px; margin: 10px;">Manual Toggle</button>
+        <div id="debug-info" style="margin-top: 20px; font-family: monospace; text-align: left; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 5px;"></div>
+    </div>
+    
+    <script>
+        // Simple mobile menu script
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const debugInfo = document.getElementById('debug-info');
+            
+            function updateDebugInfo() {
+                if (navMenu) {
+                    const styles = window.getComputedStyle(navMenu);
+                    debugInfo.innerHTML = `
+                        <strong>Nav Menu Debug Info:</strong><br>
+                        Position: ${styles.position}<br>
+                        Left: ${styles.left}<br>
+                        Top: ${styles.top}<br>
+                        Z-Index: ${styles.zIndex}<br>
+                        Display: ${styles.display}<br>
+                        Width: ${styles.width}<br>
+                        Height: ${styles.height}<br>
+                        Background: ${styles.background}<br>
+                        Has Active Class: ${navMenu.classList.contains('active')}<br>
+                        Hamburger Active: ${hamburger ? hamburger.classList.contains('active') : 'N/A'}
+                    `;
+                }
+            }
+            
+            updateDebugInfo();
+            
+            console.log('🍔 Hamburger found:', !!hamburger);
+            console.log('📋 Nav menu found:', !!navMenu);
+            console.log('🔗 Nav links found:', navLinks.length);
+            
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('🍔 HAMBURGER CLICKED!');
+                    
+                    hamburger.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                    
+                    updateDebugInfo();
+                    
+                    console.log('📋 Menu active:', navMenu.classList.contains('active'));
+                });
+                
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        console.log('🔗 Link clicked, closing menu');
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        updateDebugInfo();
+                    });
+                });
+            }
+            
+            // Manual toggle function for testing
+            window.toggleMenu = function() {
+                if (hamburger && navMenu) {
+                    hamburger.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                    updateDebugInfo();
+                }
+            };
+        });
+    </script>
+</body>
+</html>

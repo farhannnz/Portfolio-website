@@ -60,16 +60,18 @@
         <div class="floating-shape shape-5"></div>
     </div>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
+    <!-- Navigation with Inline Mobile Menu Fix -->
+    <nav class="navbar"
+        style="position: fixed; top: 0; left: 0; width: 100%; background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(10px); z-index: 1000; transition: all 0.3s ease; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+        <div class="nav-container"
+            style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; height: 70px;">
             <div class="nav-logo">
                 <div class="logo-container">
                     <span class="logo-text">FP</span>
                     <div class="logo-glow"></div>
                 </div>
             </div>
-            <ul class="nav-menu">
+            <ul class="nav-menu" style="display: flex; list-style: none; gap: 2rem; margin: 0; padding: 0;">
                 <li><a href="#home" class="nav-link"><span class="nav-text">Home</span>
                         <div class="nav-hover-effect"></div>
                     </a></li>
@@ -86,13 +88,253 @@
                         <div class="nav-hover-effect"></div>
                     </a></li>
             </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="hamburger"
+                style="display: none; flex-direction: column; cursor: pointer; padding: 10px; background: rgba(255, 255, 255, 0.1); border-radius: 5px; border: 1px solid rgba(255, 255, 255, 0.2);">
+                <span
+                    style="width: 25px; height: 3px; background: white; margin: 3px 0; transition: 0.3s; border-radius: 2px;"></span>
+                <span
+                    style="width: 25px; height: 3px; background: white; margin: 3px 0; transition: 0.3s; border-radius: 2px;"></span>
+                <span
+                    style="width: 25px; height: 3px; background: white; margin: 3px 0; transition: 0.3s; border-radius: 2px;"></span>
             </div>
         </div>
     </nav>
+
+    <!-- Stylish Mobile Menu Overlay -->
+    <div id="mobile-menu-overlay" style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(20,20,40,0.98) 50%, rgba(0,0,0,0.95) 100%);
+        z-index: 99999;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem;
+        backdrop-filter: blur(20px);
+        opacity: 0;
+        transform: scale(0.8);
+        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    ">
+        <!-- Animated Background Particles -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden;">
+            <div style="position: absolute; width: 4px; height: 4px; background: #4ecdc4; border-radius: 50%; animation: float1 6s ease-in-out infinite; top: 20%; left: 10%;"></div>
+            <div style="position: absolute; width: 6px; height: 6px; background: #ff6b6b; border-radius: 50%; animation: float2 8s ease-in-out infinite; top: 60%; right: 15%;"></div>
+            <div style="position: absolute; width: 3px; height: 3px; background: #45b7d1; border-radius: 50%; animation: float3 7s ease-in-out infinite; bottom: 30%; left: 20%;"></div>
+            <div style="position: absolute; width: 5px; height: 5px; background: #96ceb4; border-radius: 50%; animation: float1 9s ease-in-out infinite; top: 40%; right: 30%;"></div>
+        </div>
+
+        <!-- Menu Title -->
+        <div style="font-size: 1rem; color: #4ecdc4; font-weight: 300; letter-spacing: 3px; margin-bottom: 1rem; opacity: 0; transform: translateY(-20px); animation: slideInTitle 0.6s ease-out 0.2s forwards;">NAVIGATION</div>
+
+        <!-- Menu Items -->
+        <div style="background: linear-gradient(135deg, rgba(255,107,107,0.1) 0%, rgba(78,205,196,0.1) 100%); border: 2px solid transparent; border-radius: 15px; padding: 0.8rem 2.5rem; margin: 0.3rem 0; backdrop-filter: blur(10px); transform: translateX(-100px); opacity: 0; animation: slideInLeft 0.5s ease-out 0.3s forwards; transition: all 0.3s ease;" 
+             onmouseover="this.style.transform='scale(1.05)'; this.style.border='2px solid #4ecdc4';" 
+             onmouseout="this.style.transform='scale(1)'; this.style.border='2px solid transparent';">
+            <a href="#home" style="color: white; text-decoration: none; font-size: 1.6rem; font-weight: 500; display: flex; align-items: center; gap: 1rem;">
+                <span style="font-size: 1.3rem;">🏠</span> Home
+            </a>
+        </div>
+
+        <div style="background: linear-gradient(135deg, rgba(255,107,107,0.1) 0%, rgba(78,205,196,0.1) 100%); border: 2px solid transparent; border-radius: 15px; padding: 0.8rem 2.5rem; margin: 0.3rem 0; backdrop-filter: blur(10px); transform: translateX(-100px); opacity: 0; animation: slideInLeft 0.5s ease-out 0.4s forwards; transition: all 0.3s ease;" 
+             onmouseover="this.style.transform='scale(1.05)'; this.style.border='2px solid #4ecdc4';" 
+             onmouseout="this.style.transform='scale(1)'; this.style.border='2px solid transparent';">
+            <a href="#about" style="color: white; text-decoration: none; font-size: 1.6rem; font-weight: 500; display: flex; align-items: center; gap: 1rem;">
+                <span style="font-size: 1.3rem;">👨‍💻</span> About
+            </a>
+        </div>
+
+        <div style="background: linear-gradient(135deg, rgba(255,107,107,0.1) 0%, rgba(78,205,196,0.1) 100%); border: 2px solid transparent; border-radius: 15px; padding: 0.8rem 2.5rem; margin: 0.3rem 0; backdrop-filter: blur(10px); transform: translateX(-100px); opacity: 0; animation: slideInLeft 0.5s ease-out 0.5s forwards; transition: all 0.3s ease;" 
+             onmouseover="this.style.transform='scale(1.05)'; this.style.border='2px solid #4ecdc4';" 
+             onmouseout="this.style.transform='scale(1)'; this.style.border='2px solid transparent';">
+            <a href="#experience" style="color: white; text-decoration: none; font-size: 1.6rem; font-weight: 500; display: flex; align-items: center; gap: 1rem;">
+                <span style="font-size: 1.3rem;">💼</span> Experience
+            </a>
+        </div>
+
+        <div style="background: linear-gradient(135deg, rgba(255,107,107,0.1) 0%, rgba(78,205,196,0.1) 100%); border: 2px solid transparent; border-radius: 15px; padding: 0.8rem 2.5rem; margin: 0.3rem 0; backdrop-filter: blur(10px); transform: translateX(-100px); opacity: 0; animation: slideInLeft 0.5s ease-out 0.6s forwards; transition: all 0.3s ease;" 
+             onmouseover="this.style.transform='scale(1.05)'; this.style.border='2px solid #4ecdc4';" 
+             onmouseout="this.style.transform='scale(1)'; this.style.border='2px solid transparent';">
+            <a href="#projects" style="color: white; text-decoration: none; font-size: 1.6rem; font-weight: 500; display: flex; align-items: center; gap: 1rem;">
+                <span style="font-size: 1.3rem;">🚀</span> Projects
+            </a>
+        </div>
+
+        <div style="background: linear-gradient(135deg, rgba(255,107,107,0.1) 0%, rgba(78,205,196,0.1) 100%); border: 2px solid transparent; border-radius: 15px; padding: 0.8rem 2.5rem; margin: 0.3rem 0; backdrop-filter: blur(10px); transform: translateX(-100px); opacity: 0; animation: slideInLeft 0.5s ease-out 0.7s forwards; transition: all 0.3s ease;" 
+             onmouseover="this.style.transform='scale(1.05)'; this.style.border='2px solid #4ecdc4';" 
+             onmouseout="this.style.transform='scale(1)'; this.style.border='2px solid transparent';">
+            <a href="#contact" style="color: white; text-decoration: none; font-size: 1.6rem; font-weight: 500; display: flex; align-items: center; gap: 1rem;">
+                <span style="font-size: 1.3rem;">📧</span> Contact
+            </a>
+        </div>
+
+        <!-- Stylish Close Button -->
+        <div style="position: absolute; top: 30px; right: 30px; color: white; font-size: 1.5rem; cursor: pointer; padding: 15px; background: linear-gradient(135deg, rgba(255,107,107,0.2) 0%, rgba(78,205,196,0.2) 100%); border: 2px solid rgba(255,255,255,0.1); border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(10px); transition: all 0.3s ease; transform: rotate(0deg);" 
+             onclick="closeMobileMenu()"
+             onmouseover="this.style.transform='rotate(90deg) scale(1.1)'; this.style.background='linear-gradient(135deg, rgba(255,107,107,0.4) 0%, rgba(78,205,196,0.4) 100%)';"
+             onmouseout="this.style.transform='rotate(0deg) scale(1)'; this.style.background='linear-gradient(135deg, rgba(255,107,107,0.2) 0%, rgba(78,205,196,0.2) 100%)';">✕</div>
+
+        <!-- Bottom Decoration -->
+        <div style="position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); width: 100px; height: 2px; background: linear-gradient(90deg, transparent 0%, #4ecdc4 50%, transparent 100%); opacity: 0; animation: fadeInUp 0.6s ease-out 0.8s forwards;"></div>
+    </div>
+
+    <style>
+        /* Mobile Menu Styles */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex !important;
+                z-index: 100000 !important;
+            }
+
+            .nav-menu {
+                display: none !important;
+            }
+        }
+
+        @media (min-width: 769px) {
+            #mobile-menu-overlay {
+                display: none !important;
+            }
+        }
+
+        /* Stylish Animations */
+        @keyframes float1 {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(120deg); }
+            66% { transform: translateY(10px) rotate(240deg); }
+        }
+
+        @keyframes float2 {
+            0%, 100% { transform: translateX(0px) rotate(0deg); }
+            50% { transform: translateX(20px) rotate(180deg); }
+        }
+
+        @keyframes float3 {
+            0%, 100% { transform: translate(0px, 0px) rotate(0deg); }
+            33% { transform: translate(15px, -15px) rotate(120deg); }
+            66% { transform: translate(-10px, 10px) rotate(240deg); }
+        }
+
+        @keyframes slideInTitle {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
+
+        /* Menu Active State */
+        #mobile-menu-overlay.active {
+            opacity: 1 !important;
+            transform: scale(1) !important;
+        }
+    </style>
+
+    <script>
+        // Stylish Mobile Menu Overlay Script
+        function openMobileMenu() {
+            console.log('🍔 OPENING STYLISH MOBILE MENU!');
+            const overlay = document.getElementById('mobile-menu-overlay');
+            const hamburger = document.querySelector('.hamburger');
+
+            if (overlay) {
+                overlay.style.display = 'flex';
+                // Trigger animation after display
+                setTimeout(() => {
+                    overlay.classList.add('active');
+                }, 10);
+                document.body.style.overflow = 'hidden';
+                console.log('✅ Stylish mobile menu opened with animations');
+            }
+
+            if (hamburger) {
+                hamburger.classList.add('active');
+            }
+        }
+
+        function closeMobileMenu() {
+            console.log('🔒 CLOSING STYLISH MOBILE MENU!');
+            const overlay = document.getElementById('mobile-menu-overlay');
+            const hamburger = document.querySelector('.hamburger');
+
+            if (overlay) {
+                overlay.classList.remove('active');
+                // Hide after animation completes
+                setTimeout(() => {
+                    overlay.style.display = 'none';
+                }, 400);
+                document.body.style.overflow = 'auto';
+                console.log('✅ Stylish mobile menu closed with animations');
+            }
+
+            if (hamburger) {
+                hamburger.classList.remove('active');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const hamburger = document.querySelector('.hamburger');
+            const overlayLinks = document.querySelectorAll('#mobile-menu-overlay a');
+
+            console.log('🍔 Hamburger found:', !!hamburger);
+            console.log('🔗 Overlay links found:', overlayLinks.length);
+
+            // Hamburger click to open menu
+            if (hamburger) {
+                hamburger.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    openMobileMenu();
+                });
+            }
+
+            // Close menu when clicking links
+            overlayLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    console.log('🔗 Overlay link clicked, closing menu');
+                    closeMobileMenu();
+                });
+            });
+
+            // Close on escape key
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    closeMobileMenu();
+                }
+            });
+        });
+
+        // Hamburger animation styles
+        const style = document.createElement('style');
+        style.textContent = `
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px) !important;
+            }
+            .hamburger.active span:nth-child(2) {
+                opacity: 0 !important;
+            }
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px) !important;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
 
     <!-- Hero Section -->
     <section id="home" class="hero">

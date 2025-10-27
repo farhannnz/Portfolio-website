@@ -47,6 +47,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 duration: 0.5,
                 onComplete: () => {
                     loader.style.display = 'none';
+                    loader.style.visibility = 'hidden';
+                    loader.style.zIndex = '-1';
+                    console.log('✅ Loader completely hidden');
                     initAnimations();
                 }
             });
@@ -311,39 +314,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Navigation functionality
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('.nav-menu');
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
-        
-        // Prevent body scroll when menu is open
-        if (navMenu.classList.contains('active')) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'auto';
-        }
-    });
-
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        });
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-    });
+    // SIMPLE HAMBURGER MENU - Initialize immediately
+    initMobileMenu();
 
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
